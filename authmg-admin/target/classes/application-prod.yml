@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 1 #初始化建立连接数量
+      max-active: 30 #最大连接池数量
+      min-idle: 5 #最小连接池数量
+      filters: stat,wall #监控统计过滤器
+      max-wait: 60000 #获取连接最长等待60s时间
+      time-between-eviction-runs-millis: 60000 #每隔60s检测需要关闭的空闲连接
+      min-evictable-idle-time-millis: 30000 #连接保持空闲不被驱逐的最小时间
+      validation-query: select 1 from dual  #检测连接是否有效sql
+      stat-view-servlet: #druid可视化界面用户名和密码
+        login-username: admin
+        login-password: 123456
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.124.9:3306/authmg?charaterEncoding=utf-8&useUnicode=true&useSSL=false&serverTimeZone=Aisa/shanghai
+      username: root
+      password: 123456
+    second:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.124.19:3306/authmg?charaterEncoding=utf-8&useUnicode=true&useSSL=false&serverTimeZone=Aisa/shanghai
+      username: authmg
+      password: 123456
+
+
+logging:
+  config: classpath:log4j2-prod.xml

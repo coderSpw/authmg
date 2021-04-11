@@ -1,0 +1,47 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: authmg-gatway
+  boot:
+    admin:
+      client:
+        url: http://192.168.124.9:8000
+        instance:
+          prefer-ip: true
+  cloud:
+    gateway:
+      routes:
+      - id: authmg-admin
+        uri: lb://authmg-admin/
+        predicates:
+          - Path=/admin/**
+        filters:
+          - StripPrefix=0
+      - id: authmg-backup
+        uri: lb://authmg-backup/
+        predicates:
+          - Path=/backup/**
+        filters:
+          - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  redis:
+    host: 192.168.124.9
+    port: 6379
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://192.168.124.9:8761/eureka/, http://192.168.124.19:8761/eureka/
+  instance:
+    hostname: gatway
+    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

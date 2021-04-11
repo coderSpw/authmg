@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/authmg.iml" filepath="$PROJECT_DIR$/authmg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-admin/authmg-admin.iml" filepath="$PROJECT_DIR$/authmg-admin/authmg-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-backup/authmg-backup.iml" filepath="$PROJECT_DIR$/authmg-backup/authmg-backup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-codegen/authmg-codegen.iml" filepath="$PROJECT_DIR$/authmg-codegen/authmg-codegen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-common/authmg-common.iml" filepath="$PROJECT_DIR$/authmg-common/authmg-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-core/authmg-core.iml" filepath="$PROJECT_DIR$/authmg-core/authmg-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-gateway/authmg-gateway.iml" filepath="$PROJECT_DIR$/authmg-gateway/authmg-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-monitor/authmg-monitor.iml" filepath="$PROJECT_DIR$/authmg-monitor/authmg-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authmg-server/authmg-server.iml" filepath="$PROJECT_DIR$/authmg-server/authmg-server.iml" />
+    </modules>
+  </component>
+</project>

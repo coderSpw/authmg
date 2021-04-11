@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="authmg-admin" />
+        <module name="authmg-backup" />
+        <module name="authmg-codegen" />
+        <module name="authmg-common" />
+        <module name="authmg-core" />
+        <module name="authmg-gateway" />
+        <module name="authmg-gatway" />
+        <module name="authmg-monitor" />
+        <module name="authmg-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authmg" target="1.8" />
+      <module name="authmg-admin" target="1.8" />
+      <module name="authmg-backup" target="1.8" />
+      <module name="authmg-codegen" target="1.8" />
+      <module name="authmg-common" target="1.8" />
+      <module name="authmg-core" target="1.8" />
+      <module name="authmg-gateway" target="1.8" />
+      <module name="authmg-gatway" target="1.8" />
+      <module name="authmg-monitor" target="1.8" />
+      <module name="authmg-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,34 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: authmg-admin
+  profiles:
+    active: dev
+  boot:
+    admin:
+      client:
+        url: http://192.168.124.9:8000
+        instance:
+          prefer-ip: true
+
+
+mybatis:
+  type-aliases-package: com.spw.authmg.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+eureka:
+  instance:
+    hostname: admin
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://192.168.124.9:8761/eureka/,http://192.168.124.19:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

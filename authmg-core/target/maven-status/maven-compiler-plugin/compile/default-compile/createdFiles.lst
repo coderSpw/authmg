@@ -1,0 +1,6 @@
+com\spw\authmg\core\page\MyPageHelper.class
+com\spw\authmg\core\http\ResultCode.class
+com\spw\authmg\core\page\PageRequest.class
+com\spw\authmg\core\page\PageResult.class
+com\spw\authmg\core\http\RespResult.class
+com\spw\authmg\core\service\CrudService.class

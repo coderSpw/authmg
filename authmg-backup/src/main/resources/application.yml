@@ -1,0 +1,34 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: authmg-backup
+  boot:
+    admin:
+      client:
+        url: http://192.168.124.9:8000
+        instance:
+          prefer-ip: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.124.9:8761/eureka/, http://192.168.124.19:8761/eureka/
+  instance:
+    hostname: backup
+    prefer-ip-address: true
+
+authmg:
+  backup:
+    datasource:
+      host: 192.168.124.9:3306  #主库
+      username: root
+      password: 123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  hystrix:
+    enabled: true

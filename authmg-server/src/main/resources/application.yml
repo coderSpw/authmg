@@ -1,0 +1,16 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: authmg-server
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://192.168.124.9:8761/eureka/
+      #defaultZone: http://192.168.124.19:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: server1
+    #hostname: server2
