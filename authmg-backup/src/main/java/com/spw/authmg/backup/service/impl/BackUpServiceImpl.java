@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -48,7 +49,7 @@ public class BackUpServiceImpl implements BackUpService {
         String username = dataSourceProperties.getUsername();
         String password = dataSourceProperties.getPassword();
         if (restoreFile.exists() && restoreFile.isDirectory()) {
-            String restorePath = Arrays.stream(restoreFile.listFiles())
+            String restorePath = Arrays.stream(Objects.requireNonNull(restoreFile.listFiles()))
                     .filter(x -> x.exists() && x.getPath().endsWith(".sql"))
                     .collect(Collectors.toList()).get(1)
                     .getAbsolutePath();
@@ -66,8 +67,8 @@ public class BackUpServiceImpl implements BackUpService {
         File backFile = new File(backupPath);
         List<String> fileNameList= new ArrayList<>();
         if (backFile.exists() && backFile.isDirectory()) {
-            fileNameList = Arrays.stream(backFile.listFiles())
-                    .map(o -> o.getName())
+            fileNameList = Arrays.stream(Objects.requireNonNull(backFile.listFiles()))
+                    .map(File::getName)
                     .collect(Collectors.toList());
         }
         return fileNameList;
@@ -77,9 +78,9 @@ public class BackUpServiceImpl implements BackUpService {
     public void deleteByName(@NotNull String name) {
         File file = new File(backupPath);
         if (file.exists() && file.isDirectory()) {
-            Arrays.stream(file.listFiles())
+            Arrays.stream(Objects.requireNonNull(file.listFiles()))
                     .filter(x -> x.getName().startsWith(name))
-                    .forEach(o -> o.delete());
+                    .forEach(File::delete);
         }
     }
 

@@ -41,6 +41,7 @@ public class ReqAndRespAspect {
         Method method = signature.getMethod();*/
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         //获取请求
+        assert attributes != null;
         HttpServletRequest request = attributes.getRequest();
         //日志打印请求信息
         log.info("method: {} ====> args: {}", request.getMethod(), Arrays.toString(joinPoint.getArgs()));
@@ -53,6 +54,7 @@ public class ReqAndRespAspect {
     @AfterReturning(pointcut = "webLog()", returning = "ret")
     public void doAfterReturning(Object ret) {
        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        assert attributes != null;
         HttpServletRequest request = attributes.getRequest();
         log.info("method: {} ====> response: {}", request.getMethod(), JSON.toJSONString(ret));
     }

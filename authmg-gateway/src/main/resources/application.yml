@@ -15,15 +15,20 @@ spring:
       - id: authmg-admin
         uri: lb://authmg-admin/
         predicates:
-          - Path=/admin/**
+        - Path=/admin/**
         filters:
-          - StripPrefix=0
+        - StripPrefix=0
+        - name: RequestRateLimiter  #限流
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}' #bean
+            redis-rate-limiter.replenishRate: 1     # 每秒填充速率
+            redis-rate-limiter.burstCapacity: 20    # 桶容量
       - id: authmg-backup
         uri: lb://authmg-backup/
         predicates:
-          - Path=/backup/**
+        - Path=/backup/**
         filters:
-          - StripPrefix=1
+        - StripPrefix=1
       discovery:
         locator:
           enabled: true
@@ -40,6 +45,7 @@ eureka:
   instance:
     hostname: gatway
     prefer-ip-address: true
+
 management:
   endpoints:
     web:

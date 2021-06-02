@@ -24,6 +24,10 @@ spring:
       url: jdbc:mysql://192.168.124.19:3306/authmg?charaterEncoding=utf-8&useUnicode=true&useSSL=false&serverTimeZone=Aisa/shanghai
       username: authmg
       password: 123456
+  redis:
+    host: 192.168.124.9
+    port: 6379
+    database: 0
 
 logging:
   config: classpath:log4j2-dev.xml

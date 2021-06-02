@@ -16,6 +16,7 @@ public class BaseFeignInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        assert requestAttributes != null;
         String token = (String) requestAttributes.getRequest().getAttribute("token");
         if (!StringUtils.isEmpty(token)) {
             requestTemplate.header("token", token);

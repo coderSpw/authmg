@@ -1,6 +1,6 @@
 package com.spw.authmg.core.http;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -10,6 +10,7 @@ import java.io.Serializable;
  * @date 2021/02/15
  */
 @Data
+@Builder
 public class RespResult implements Serializable {
     /**
      * 响应码
@@ -26,38 +27,26 @@ public class RespResult implements Serializable {
      */
     private Object data;
 
-    public RespResult setCode(int code) {
-        this.code = code;
-        return this;
-    }
-
-    public RespResult setMsg(String msg) {
-        this.msg = msg;
-        return this;
-    }
-
-    public RespResult setData(Object data) {
-        this.data = data;
-        return this;
-    }
-
     public static RespResult sucessResult(Object data) {
-        return new RespResult()
-                .setCode(ResultCode.SUCCESS.code)
-                .setMsg(ResultCode.SUCCESS.msg)
-                .setData(data);
+        return RespResult.builder()
+                .code(ResultCode.SUCCESS.code)
+                .msg(ResultCode.SUCCESS.msg)
+                .data(data)
+                .build();
     }
 
     public static RespResult sucessResult() {
-        return new RespResult()
-                .setCode(ResultCode.SUCCESS.code)
-                .setMsg(ResultCode.SUCCESS.msg);
+        return RespResult.builder()
+                .code(ResultCode.SUCCESS.code)
+                .msg(ResultCode.SUCCESS.msg)
+                .build();
     }
 
     public static RespResult failResult(String msg) {
-        return new RespResult()
-                .setCode(ResultCode.SERVER_ERROR.code)
-                .setMsg(ResultCode.SERVER_ERROR.msg + ":" + msg);
+        return RespResult.builder()
+                .code(ResultCode.SERVER_ERROR.code)
+                .msg(ResultCode.SERVER_ERROR.msg + ":" + msg)
+                .build();
     }
 
 }

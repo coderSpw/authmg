@@ -13,6 +13,6 @@ public class SysUserFallback implements SysUserFeign {
 
     @Override
     public RespResult findAll() {
-        return RespResult.failResult("服务正在重启或已经挂了~~~~");
+        return RespResult.failResult("操作繁忙,稍后再重试~~~~");
     }
 }

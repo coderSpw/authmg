@@ -7,6 +7,7 @@ package com.spw.gatway.configuration;
  */
 
 import com.spw.gatway.constants.GateWayConstants;
+import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +19,7 @@ import org.springframework.web.server.WebFilter;
 import reactor.core.publisher.Mono;
 
 @Configuration
-public class RouteConfig {
+public class GatewayConfig {
 
     /**
      * cors配置
@@ -44,4 +45,15 @@ public class RouteConfig {
             return chain.filter(exchange);
         };
     }
+
+
+    /**
+     * 根据hostAddr限流
+     * @return
+     */
+    @Bean
+    public KeyResolver hostAddrKeyResolver() {
+        return exchange -> Mono.just(exchange.getRequest().getRemoteAddress().getAddress().getHostAddress());
+    }
+
 }
